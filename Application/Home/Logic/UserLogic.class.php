@@ -27,10 +27,6 @@ class UserLogic
 
     public static function insert($data)
     {
-        if ($data['signature'] == null || $data['signature'] =="")
-        {
-            $data['signature'] = $data['username'];
-        }
         $pwd = Passwd::getPwdCode($data['password']);
         $data['password'] = $pwd;
         try {

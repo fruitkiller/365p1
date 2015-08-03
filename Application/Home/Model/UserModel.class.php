@@ -20,7 +20,5 @@ class UserModel extends Model{
         array('regtime','time',1,'function'),
         array('lasttime','time',3,'function'),
         array('qqid','null',1),
-        array('scores',0,1),
-        array('money',0,1),
     );
 }
