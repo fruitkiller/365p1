@@ -27,10 +27,6 @@ class ReplyLogic
 
     public static function insert($data)
     {
-        if ($data['client'] == null || $data['client'] =="")
-        {
-            $data['client'] = "null";
-        }
         try {
             $Reply = D('Reply');
             if($Reply->create($data,1)){

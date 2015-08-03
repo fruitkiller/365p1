@@ -27,7 +27,8 @@ CREATE TABLE `act_interest` (
   `uid`  bigint(16) unsigned NOT NULL,
   `iuid`  bigint(16) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`,`uid`,`iuid`)
+  PRIMARY KEY (`id`),
+  KEY (`uid`,`iuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 
@@ -47,7 +48,8 @@ CREATE TABLE `act_topic` (
   `createtime` int(11) unsigned NOT NULL,
   `finishtime` int(11) unsigned NOT NULL,
   `lastreplytime` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`tid`,`uid`,`title`)
+  PRIMARY KEY (`tid`),
+  KEY (`uid`,`title`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 
@@ -60,7 +62,8 @@ CREATE TABLE `act_reply` (
   `atid` bigint(16) unsigned NOT NULL default '0',
   `content` text NOT NULL,
   `posttime` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`rid`,`tid`,`uid`)
+  PRIMARY KEY (`rid`),
+  KEY (`frid`,`tid`,`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS `act_attachment`;
@@ -71,7 +74,8 @@ CREATE TABLE `act_attachment` (
   `time` int(11) unsigned NOT NULL,
   `type` int(11) unsigned NOT NULL DEFAULT '0',
   `itype` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`atid`,`iid`)
+  PRIMARY KEY (`atid`),
+  KEY (`iid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 DROP TABLE IF EXISTS `act_favorite`;
@@ -80,7 +84,8 @@ CREATE TABLE `act_favorite` (
   `uid`  bigint(16) unsigned NOT NULL,
   `tid`  bigint(16) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`,`uid`,`tid`)
+  PRIMARY KEY (`id`),
+  KEY (`uid`,`tid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
 
 

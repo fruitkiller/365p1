@@ -28,21 +28,4 @@ class TopicController extends Controller{
     public function tlist($pagenum,$pagesize){
         echo TopicLogic::tlist($pagenum,$pagesize);
     }
-
-    public function v_tlist($pagenum,$pagesize){
-        $data = TopicLogic::tlist($pagenum,$pagesize);
-        $obj = json_decode($data);
-        /*if($obj['status'] == 0){
-            $res="<table>";
-            foreach($obj['message'] as $topic ){
-                $res = $res."<tr>";
-                $res = $res."<th>".$topic['title']."</th>";
-                $res = $res."</tr>";
-            }
-            $res += "</table>";
-        }*/
-
-        $this->assign('data',$obj['status']);
-        $this->display();
-    }
 }
