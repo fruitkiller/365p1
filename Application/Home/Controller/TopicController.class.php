@@ -7,6 +7,7 @@
  */
 namespace Home\Controller;
 
+use Home\Logic\ReplyLogic;
 use Home\Logic\TopicLogic;
 use Think\Controller;
 use Home\Common\ReturnCode;
@@ -27,5 +28,9 @@ class TopicController extends Controller{
 
     public function tlist($pagenum,$pagesize){
         echo TopicLogic::tlist($pagenum,$pagesize);
+    }
+
+    public function getReplay($tid,$pagenum,$pagesize){
+        echo ReplyLogic::listReplaysByTid($tid,$pagenum,$pagesize);
     }
 }

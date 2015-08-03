@@ -47,4 +47,16 @@ class ReplyLogic
         }
     }
 
+    public static function listReplaysByTid($tid,$pagenum,$pagesize){
+        try {
+            $Replay = M('Replay');
+            $condition['tid'] = $tid;
+            $Replays = $Replay->where($condition)->order('posttime desc')
+                ->limit(($pagenum - 1) * $pagesize ,$pagesize)->select();
+            return ReturnCode::getCode(0, $Replays);
+        }catch (Exception $e){
+            ReturnCode::getCode(1, $e->getError());
+        }
+    }
+
 }

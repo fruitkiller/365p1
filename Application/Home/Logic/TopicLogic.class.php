@@ -62,22 +62,14 @@ class TopicLogic
             $condition['tid'] = $tid;
             $comments = $Topic->where($condition)->field('comments')->select();
             $data['comments'] = $comments + 1;
+            $data['lastreplytime'] = time();
             $Topic->where($condition)->save($data);
         }catch (Exception $e){
             throw $e;
         }
     }
 
-    public static function resetLastReplyTime($tid){
-        try {
-            $Topic = M('Topic');
-            $condition['tid'] = $tid;
-            $commen = $Topic->where($condition)->field('lastreplytime')->select();
-            $data['comments'] = $comments + 1;
-            $Topic->where($condition)->save($data);
-        }catch (Exception $e){
-            throw $e;
-        }
-    }
+
+
 
 }
