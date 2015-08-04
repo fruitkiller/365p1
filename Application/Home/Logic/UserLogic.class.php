@@ -58,4 +58,16 @@ class UserLogic
         }
     }
 
+    public static function login($data){
+        try {
+            $User = M('User');
+            $condition['username'] = $data['username'];
+            $user = $User->where($condition)->select();
+
+            echo ReturnCode::getCode(0,$data);
+        }catch (Exception $e){
+            echo ReturnCode::getCode(1,$e->getMessage());
+        }
+    }
+
 }

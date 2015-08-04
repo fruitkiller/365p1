@@ -7,7 +7,7 @@
  */
 namespace Home\Logic;
 
-use Home\Common\Passwd;
+
 use Home\Common\ReturnCode;
 use Think\Exception;
 
