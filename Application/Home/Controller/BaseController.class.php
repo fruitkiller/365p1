@@ -16,8 +16,8 @@ include '../Common/Constant.php';
 class BaseController extends Controller
 {
     public function _initialize(){
-        if(!session('?'+SESSiON_USER_ID)){
-            $this->error("not login");
+        if(!session('?'+SESSiON_USER_KEY)){
+            $this->error("not login",'/365p1/?c=index&a=index',0);
         }
     }
 }

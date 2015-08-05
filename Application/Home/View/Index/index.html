@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>login</title>
 </head>
 <body>
-{$result.id}--{$result.data}
+<FORM method="post" action="__URL__/login">
+    用户名：<INPUT type="text" name="username"><br/>
+    密码：<INPUT type="text" name="password"><br/>
+    <INPUT type="submit" value="登录">
+</FORM>
 </body>
 </html>
