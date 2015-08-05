@@ -13,7 +13,7 @@ use Home\Logic\UserLogic;
 use Think\Controller;
 use Home\Common\ReturnCode;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     public function insert(){
         if(IS_POST) {

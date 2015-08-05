@@ -52,9 +52,9 @@ class UserLogic
         try {
             $User = M('User');
             $data = $User->limit(($pagenum - 1) * $pagesize ,$pagesize)->select();
-            echo ReturnCode::getCode(0,$data);
+            return ReturnCode::getCode(0,$data);
         }catch (Exception $e){
-            echo ReturnCode::getCode(1,$e->getMessage());
+            return ReturnCode::getCode(1,$e->getMessage());
         }
     }
 
@@ -62,11 +62,15 @@ class UserLogic
         try {
             $User = M('User');
             $condition['username'] = $data['username'];
-            $user = $User->where($condition)->select();
-
-            echo ReturnCode::getCode(0,$data);
+            $user = $User->where($condition)->find();
+            $pwd = Passwd::getPwdCode($data['password']);
+            if ($pwd == $user['password']){
+                return 0;
+            }else{
+                return 1;
+            }
         }catch (Exception $e){
-            echo ReturnCode::getCode(1,$e->getMessage());
+            return ReturnCode::getCode(1,$e->getMessage());
         }
     }
 
