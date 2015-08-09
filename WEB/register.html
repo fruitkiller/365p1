@@ -6,22 +6,16 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/global.js"></script>
     <script>
-        function login() {
+        function register() {
             var user = $("#username").val();
             var pass = $("#password").val();
             jsonObject = $.ajax({
                 async: false,
                 type: "POST",
-                url: base_url + "c=login&a=login",
+                url: base_url + "c=index&a=login",
                 data: {"username": user, "password": pass},
                 success: function (data) {
-                    //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
-                    var obj = eval("("+data+")");;
-                    if(obj.status == 0) {
-                        location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
-                    }else{
-                        $("#res").append("err");
-                    }
+                    location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
                 },
                 error: function () {
                     $("#res").append("err");
@@ -39,11 +33,10 @@
 <fieldset id="inputs">
     <input id="username" type="text" placeholder="Username" autofocus required><br/>
     <input id="password" type="password" placeholder="Password" required>
-    <div id ="res"></div>
 </fieldset>
 <fieldset id="actions">
-    <button id="submit" value="Login" onclick="login()">login</button>
-    <a href="">Forgot</a>&nbsp;&nbsp;<a href="">Register</a>
+    <button id="submit" value="re" onclick="register()">register</button>
+    <a href="index.html">login</a>
 </fieldset>
 
 </body>

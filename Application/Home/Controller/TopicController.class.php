@@ -12,7 +12,7 @@ use Home\Logic\TopicLogic;
 use Think\Controller;
 use Home\Common\ReturnCode;
 
-class TopicController extends Controller{
+class TopicController extends BaseController{
 
     public function insert(){
         if(IS_POST) {

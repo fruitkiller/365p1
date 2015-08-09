@@ -28,9 +28,9 @@ class LoginController extends Controller
         $ret = UserLogic::login($_POST);
         if(0 == $ret){
             $_SESSION[SESSiON_USER_KEY] = $_POST['username'];
-            echo "ok";
+            echo ReturnCode::getCode(0,"ok");
         }else{
-            echo "err";
+            echo ReturnCode::getCode(1,"err");
         }
     }
 }

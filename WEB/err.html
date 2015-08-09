@@ -12,23 +12,17 @@
             jsonObject = $.ajax({
                 async: false,
                 type: "POST",
-                url: base_url + "c=login&a=login",
+                url: base_url + "c=index&a=login",
                 data: {"username": user, "password": pass},
                 success: function (data) {
-                    //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
-                    var obj = eval("("+data+")");;
-                    if(obj.status == 0) {
-                        location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
-                    }else{
-                        $("#res").append("err");
-                    }
+                    $("#res").append(data);
                 },
                 error: function () {
-                    $("#res").append("err");
-                }/*,
+                    $("#res").append("haha");
+                },
                 complete: function () {
                     $("#res").append("hahaha");
-                }*/
+                }
             })
         }
     </script>
@@ -39,12 +33,12 @@
 <fieldset id="inputs">
     <input id="username" type="text" placeholder="Username" autofocus required><br/>
     <input id="password" type="password" placeholder="Password" required>
-    <div id ="res"></div>
 </fieldset>
 <fieldset id="actions">
-    <button id="submit" value="Login" onclick="login()">login</button>
-    <a href="">Forgot</a>&nbsp;&nbsp;<a href="">Register</a>
+    <button id="submit" value="Log in" onclick="login()">hahah</button>
+    <a href="">Forgot your password?</a><a href="">Register</a>
 </fieldset>
+<div id="res"></div>
 
 </body>
 </html>
