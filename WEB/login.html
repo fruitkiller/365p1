@@ -6,21 +6,23 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/global.js"></script>
     <script>
-        function register() {
+        function login() {
             var user = $("#username").val();
             var pass = $("#password").val();
             jsonObject = $.ajax({
                 async: false,
                 type: "POST",
-                url: base_url + "c=user&a=insert",
+                url: base_url + "c=login&a=login",
                 data: {"username": user, "password": pass},
                 success: function (data) {
                     //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
                     var obj = eval("("+data+")");;
                     if(obj.status == 0) {
-                        location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
+                        //$.session.set(SESSION_USER_ID,obj.message)
+                        //$.session.set(SESSION_USER_KEY,user)
+                        location.href = "index.html";
                     }else{
-                        $("#res").append("err");
+                        $("#res").append("pwd err");
                     }
                 },
                 error: function () {
@@ -35,15 +37,15 @@
 </head>
 <body>
 
-<h1>register</h1>
+<h1>login</h1>
 <fieldset id="inputs">
     <input id="username" type="text" placeholder="Username" autofocus required><br/>
     <input id="password" type="password" placeholder="Password" required>
     <div id ="res"></div>
 </fieldset>
 <fieldset id="actions">
-    <button id="submit" value="" onclick="register()">register</button>
-    <a href="index.html">login</a>
+    <button id="submit" value="Login" onclick="login()">login</button>
+    <a href="">Forgot</a>&nbsp;&nbsp;<a href="register.html">Register</a>
 </fieldset>
 
 </body>

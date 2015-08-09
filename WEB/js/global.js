@@ -3,6 +3,9 @@
  */
 // JavaScript Document
 var base_url='http://localhost/365p1/?';
+var SESSION_USER_ID="session_user_id";
+var SESSION_USER_KEY="session_user_key";
+
 $(function(){
     $("#user").focus();
     $("input:text,textarea,input:password").focus(function() {

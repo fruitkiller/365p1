@@ -6,45 +6,38 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/global.js"></script>
     <script>
-        function login() {
-            var user = $("#username").val();
-            var pass = $("#password").val();
+        $(function () {
+            var pagenum = 1;
+            var pagesize = 10;
             jsonObject = $.ajax({
                 async: false,
-                type: "POST",
-                url: base_url + "c=login&a=login",
-                data: {"username": user, "password": pass},
+                type: "GET",
+                url: base_url + "c=index&a=index&pagenum=1&pagesize=10",
+                data: {},
                 success: function (data) {
-                    //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
                     var obj = eval("("+data+")");;
                     if(obj.status == 0) {
-                        location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
+                        $("#topics").append(data)
                     }else{
-                        $("#res").append("err");
+                        $("#topics").append("requst err");
                     }
                 },
                 error: function () {
-                    $("#res").append("err");
+                    $("#topics").append("err");
                 }/*,
                 complete: function () {
                     $("#res").append("hahaha");
                 }*/
             })
-        }
+        })
     </script>
 </head>
 <body>
 
-<h1>Log In</h1>
-<fieldset id="inputs">
-    <input id="username" type="text" placeholder="Username" autofocus required><br/>
-    <input id="password" type="password" placeholder="Password" required>
-    <div id ="res"></div>
-</fieldset>
-<fieldset id="actions">
-    <button id="submit" value="Login" onclick="login()">login</button>
-    <a href="">Forgot</a>&nbsp;&nbsp;<a href="">Register</a>
-</fieldset>
+<h1>topics</h1>
+<a href="addtopic.html">new topic</a>
+<table id="topics">
+</table>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ namespace Home\Controller;
 use Home\Logic\UserLogic;
 use Think\Controller;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     public function ulist($pagenum,$pagesize){
         return UserLogic::ulist($pagenum,$pagesize);

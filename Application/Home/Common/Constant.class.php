@@ -6,7 +6,9 @@
  * Time: 上午7:23
  */
 namespace Home\Common;
-
-define("SESSiON_USER_ID","session_user_id");
-define("SESSiON_USER_KEY","session_user_key");
+class Constant
+{
+    const SESSION_USER_ID="session_user_id";
+    const SESSION_USER_KEY="session_user_key";
+}
 

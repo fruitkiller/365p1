@@ -65,9 +65,9 @@ class UserLogic
             $user = $User->where($condition)->find();
             $pwd = Passwd::getPwdCode($data['password']);
             if ($pwd == $user['password']){
-                return 0;
+                return ReturnCode::getCode(0,$user['uid']);
             }else{
-                return 1;
+                return ReturnCode::getCode(1,"pwd err");
             }
         }catch (Exception $e){
             return ReturnCode::getCode(1,$e->getMessage());

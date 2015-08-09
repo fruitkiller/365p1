@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/global.js"></script>
+    <script>
+        function addtopic() {
+            var uid ='<%=Session["'+SESSION_USER_ID+'"] %>';
+            var title = $("#title").val();
+            var content = $("#content").val();
+            jsonObject = $.ajax({
+                async: false,
+                type: "POST",
+                url: base_url + "c=topic&a=insert",
+                data: {"uid":uid,"title": title, "content": content},
+                success: function (data) {
+                    var obj = eval("("+data+")");;
+                    if(obj.status == 0) {
+                        //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
+                        $("#res").append("ok:").append(uid);
+                    }else{
+                        $("#res").append("err").append(uid);
+                    }
+                },
+                error: function () {
+                    $("#res").append("err");
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<h1>Add Topic</h1>
+<fieldset id="inputs">
+    <input id="title" type="text" value="title" autofocus required><br/>
+    <textarea id="content"></textarea>
+    <div id ="res"></div>
+</fieldset>
+<fieldset id="actions">
+    <button id="submit" value="" onclick="addtopic()">sub</button>
+</fieldset>
+
+</body>
+</html>

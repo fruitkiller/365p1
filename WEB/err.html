@@ -3,42 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/global.js"></script>
-    <script>
-        function login() {
-            var user = $("#username").val();
-            var pass = $("#password").val();
-            jsonObject = $.ajax({
-                async: false,
-                type: "POST",
-                url: base_url + "c=index&a=login",
-                data: {"username": user, "password": pass},
-                success: function (data) {
-                    $("#res").append(data);
-                },
-                error: function () {
-                    $("#res").append("haha");
-                },
-                complete: function () {
-                    $("#res").append("hahaha");
-                }
-            })
-        }
-    </script>
+
 </head>
 <body>
 
-<h1>Log In</h1>
-<fieldset id="inputs">
-    <input id="username" type="text" placeholder="Username" autofocus required><br/>
-    <input id="password" type="password" placeholder="Password" required>
-</fieldset>
-<fieldset id="actions">
-    <button id="submit" value="Log in" onclick="login()">hahah</button>
-    <a href="">Forgot your password?</a><a href="">Register</a>
-</fieldset>
-<div id="res"></div>
-
+<h1>err</h1>
+404
 </body>
 </html>
