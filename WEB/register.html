@@ -12,13 +12,13 @@
             jsonObject = $.ajax({
                 async: false,
                 type: "POST",
-                url: base_url + "c=user&a=insert",
+                url: BASE_URL + "c=user&a=insert",
                 data: {"username": user, "password": pass},
                 success: function (data) {
-                    //location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
+                    //location.href = BASE_URL + "c=index&a=index&pagenum=1&pagesize=10";
                     var obj = eval("("+data+")");;
                     if(obj.status == 0) {
-                        location.href = base_url + "c=index&a=index&pagenum=1&pagesize=10";
+                        location.href = BASE_URL + "c=index&a=index&pagenum=1&pagesize=10";
                     }else{
                         $("#res").append("err");
                     }

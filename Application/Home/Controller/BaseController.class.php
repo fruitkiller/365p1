@@ -19,7 +19,7 @@ class BaseController extends Controller
     public function _initialize(){
         if(!isset($_SESSION[Constant::SESSION_USER_ID]) ||
             ! isset($_SESSION[Constant::SESSION_USER_KEY])){
-            $this->redirect(Constant::WEB_URL+"login.html");
+            //$this->redirect(Constant::WEB_URL+"login.html");
         }
     }
 

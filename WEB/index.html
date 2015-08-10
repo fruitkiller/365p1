@@ -2,42 +2,47 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>topics</title>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/global.js"></script>
     <script>
-        $(function () {
+        window.onload = function() {
             var pagenum = 1;
             var pagesize = 10;
             jsonObject = $.ajax({
                 async: false,
                 type: "GET",
-                url: base_url + "c=index&a=index&pagenum=1&pagesize=10",
+                url: BASE_URL + "c=index&a=index&pagenum=1&pagesize=10",
                 data: {},
                 success: function (data) {
-                    var obj = eval("("+data+")");;
+                    var obj = eval("("+data+")");
+                    var r="";
                     if(obj.status == 0) {
-                        $("#topics").append(data)
+                        for (var i =0 ; i < obj.message.length; i++){
+                            r = r + "<tr><td><p>"+obj.message[0].title.valueOf()+"</p><p>"
+                                    +obj.message[0].content.valueOf() + "</p></td></tr>"
+                        }
+                        $("#topics").append(r);
+
                     }else{
                         $("#topics").append("requst err");
                     }
                 },
                 error: function () {
                     $("#topics").append("err");
-                }/*,
-                complete: function () {
-                    $("#res").append("hahaha");
-                }*/
-            })
-        })
+                }
+             })
+        }
+
     </script>
 </head>
 <body>
 
 <h1>topics</h1>
 <a href="addtopic.html">new topic</a>
-<table id="topics">
+<table id="topics" border="1">
 </table>
+<div id="test"></div>
 
 </body>
 </html>
